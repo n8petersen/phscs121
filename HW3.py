@@ -17,12 +17,15 @@ print("")
 
 
 # Problem 3-2
-a_mag = 1.51 # Changing variable
+a_mag = 2.36 # Changing variable
 a_dir_deg = 35
-y = 3.38
 y_not = 0
-x_not = 0
+y = 3.38
 v_not_y = -1.32
+
+x_not = 0
+v_not_x = 0
+
 
 v_not = v_not_y
 a_y = (a_mag * math.sin(math.radians(a_dir_deg)))
@@ -44,16 +47,24 @@ for root in roots:
 print(f"3-2-a: {t:.5f} s at y(t) = 3.38m")
         
 
-## TODO: Part (b)
-### find pos_x at t
+## Part (b)
+### Formula: x = x_not + (v_not) * (t) + (1/2) * (a) * (t**2)
+
+
+x = x_not + (v_not_x) * (t) + (1/2) * (a_x) * (t**2)
+print(f"3-2-b: {x:.5f} m t = {t:.5f}")
+
+
+## Part (c)
+### Formula v_x = v_not_x + a_x * t
+v_x = v_not_x + a_x * t
+print(f"3-2-c: {v_x:.5f} m t = {t:.5f}")
 
 
 
-## TODO: Part (c)
-
-
-## TODO: Part (d)
-
+## Part (d)
+v_y = v_not_y + a_y * t
+print(f"3-2-d: {v_y:.5f} m t = {t:.5f}")
 
 print("")
 
