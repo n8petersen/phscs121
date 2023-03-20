@@ -1,4 +1,4 @@
-from Physics import quadratic_roots as quadratic
+import Physics
 import cmath
 import math
 
@@ -9,23 +9,18 @@ c = 3.10
 
 a = (c * math.sin(math.radians(degrees)))
 b = (c * math.cos(math.radians(degrees)))
-print(f"3-1-a: {a:.5f} km north")
-print(f"3-1-b: {b:.5f} km east")
-print("")
+print(f"3-1-a: {a:.5f}km north")
+print(f"3-1-b: {b:.5f}km east")
 
 
 
 
 # Problem 3-2
-a_mag = 2.36 # Changing variable
+a_mag = 2.05 # Changing variable
 a_dir_deg = 35
+y = -3.38
 y_not = 0
-y = 3.38
 v_not_y = -1.32
-
-x_not = 0
-v_not_x = 0
-
 
 v_not = v_not_y
 a_y = (a_mag * math.sin(math.radians(a_dir_deg)))
@@ -37,37 +32,19 @@ a_x = (a_mag * math.cos(math.radians(a_dir_deg)))
 ### use quadratic to solve for t
 a = (1/2) * a_y
 b = v_not
-c = -y
+c = y
 t = 0
-roots = quadratic(a, b, c)
+roots = Physics.quadratic_roots(a, b, c)
 for root in roots:
     if (root > 0): 
         t = root
 
-print(f"3-2-a: {t:.5f} s at y(t) = 3.38m")
+print(f"3-2-a: {t:.5f}s at y(t) = 3.38m")
         
 
 ## Part (b)
-### Formula: x = x_not + (v_not) * (t) + (1/2) * (a) * (t**2)
-
-
-x = x_not + (v_not_x) * (t) + (1/2) * (a_x) * (t**2)
-print(f"3-2-b: {x:.5f} m t = {t:.5f}")
-
-
-## Part (c)
-### Formula v_x = v_not_x + a_x * t
-v_x = v_not_x + a_x * t
-print(f"3-2-c: {v_x:.5f} m t = {t:.5f}")
-
-
-
-## Part (d)
-v_y = v_not_y + a_y * t
-print(f"3-2-d: {v_y:.5f} m t = {t:.5f}")
-
-print("")
-
+### find pos_x at t
+### Formula: x = x_not + v
 
 
 
@@ -92,29 +69,28 @@ b = v_not_y
 c = y_not
 t = 0
 
-roots = quadratic(a, b, c)
+roots = Physics.quadratic_roots(a, b, c)
 for root in roots:
     if (root > 0): 
         t = root
 
-print(f"3-3-a: {t:.5f} s to hit ground")
+print(f"3-3-a: {t:.5f}s to hit ground")
 
 
 ## Part (b)
 ### Formula: x = x_not + v_x * t
 x = x_not + v_x * t
 
-print(f"3-3-b: {x:.5f} m from base of cliff")
+print(f"3-3-b: {x:.5f}m from base of cliff")
 
 
 ## Part (c)
 ### Formula: v = v_not_y - g * t
 v_y = v_not_y - g * t
-print(f"3-3-c: {v_y:.5f} m/s = v_y")
+print(f"3-3-c: {v_y:.5f}m/s is v_y")
 
 ## Part (d)
-print(f"3-3-d: {v_x:.5f} m/s = v_x")
-print("")
+print(f"3-3-d: {v_x:.5f}m/s is v_x")
 
 
 
@@ -143,7 +119,7 @@ t = (x - x_not) / v_x
 y = y_not + (v_not_y * t) - ((1/2)*(g)*(t**2))
 
 y_clear = y - 3
-print(f"3-4-a: {y_clear:.5f} m = the distance between the bar and the ball")
+print(f"3-4-a: {y_clear:.5f}m is the distance between the bar and the ball")
 
 
 ## Part (b)
@@ -151,8 +127,7 @@ print(f"3-4-a: {y_clear:.5f} m = the distance between the bar and the ball")
 ### positive means ball is rising, negative means ball is falling.
 ### Use Formula: v_y = v_not_y - (g * t)
 v_y = v_not_y - (g * t)
-print(f"3-4-b: {v_y:.5f} m/s = v_y of the ball at t={t:.5f}")
-print("")
+print(f"3-4-b: {v_y:.5f}m/s is v_y of the ball at {t:.5f}")
 
 
 
@@ -161,41 +136,8 @@ print("")
 y_not = 0.860
 y = 0
 x_not = 0
-x = 1.48 # Changing variable
-
-g = 9.8
-v_not_y = 0
+x = 1.1 # Changing variable
 
 ## Part (a)
 ### Find v_x using: x = x_not + (v_x * t) 
-
-### We can find t, because we know it fell 0.860m, with v_not_y = 0, and g = 9.8.
-### y = y_not + v_not * t - (1/2) * g * t**2
-### 0 = -4.9t^2 + 0t + 0.860
-
-a = (-1/2) * (g)
-b = v_not_y
-c = y_not
-t = 0
-
-roots = quadratic(a, b, c)
-for root in roots:
-    if (root > 0): 
-        t = root
-
-# x_not + (v_x * t) = x
-# v_x * t = x - x_not
-v_x = (x - x_not) / t
-print(f"3-5-a: {v_x:.5f} m/s = v_x as it leaves edge")
-
-
-## Part (b)
-### Find the angle of velocity at landing
-### This requires both v_x and v_y. 
-### We can finc v_y from: v_y = v_not_y - g * t
-### We can get angle from arctan(v_y/v_x)
-v_y = v_not_y - g * t
-inner = v_y / v_x
-v_rad = math.atan(inner)
-v_deg = math.degrees(v_rad)
-print(f"3-5-b: {v_deg:.5f} degrees as it hits the ground")
+### Find t using: y = y_not + (1/2) * (v_not_y + v_)
