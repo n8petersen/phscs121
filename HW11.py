@@ -38,13 +38,25 @@ print("1b: ", w)
 ## Problem 2
 #a = ?
 wf = 75.9
-t = 4.01 # changing var
-theta_f = 37
+t = 4.55 # changing var
+theta_f = 37 * 2 * pi
 theta_i = 0
+theta = theta_f - theta_i
 
-## All the equations I have are missing 2?
-a = "Uncomplete"
+# wf = w_i + a*t
+# wf - w_i / t = a
 
+    # (w_i + wf / 2) = w_avg
+    # w_i + wf = 2 * w_avg
+    # w_i = 2 * w_avg   -  wf
+
+        # θ = wavg * t
+        # θ / t = wavg
+
+w_avg = theta / t
+w_i = 2 * w_avg   -  wf
+
+a = (wf - w_i) / t
 print("2: ", a)
 
 
@@ -90,3 +102,52 @@ print("3d: ", a_c)
 ### Part e
 a_t = alpha * r
 print("3e: ", a_t)
+
+
+#=======================================================#
+
+
+## Problem 4
+# No mass or radius given?? How do we calculate without these?
+d = 6.02 # changing var
+angle = 35
+
+h = d * sin(radians(angle))
+
+### Part a
+v = sqrt(G * h)
+print("4a: ", v)
+
+
+### Part b
+v = sqrt((4 * G * h) / 3)
+print("4b: ", v)
+
+
+
+#=======================================================#
+
+
+## Problem 5
+m = 500     / 1000                  # g to kg
+r = 1.48    / 100 # chaning var     # cm to m
+h = 49.5    / 100 # changing var    # cm to m
+
+i = (2*m * r**2) / 5
+print("5a: ", i)
+
+v = sqrt(10 * G * h / 7)
+print("5b: ", v)
+
+
+#=======================================================#
+
+
+## Problem 6
+v = 98.2    / 3.6 # changing var    # km/h to m/s
+r = 38.4    / 100                   # cm to m
+w = v / r
+print("6a: ", w)
+
+a_c = v**2 / r
+print("6b: ", a_c)
