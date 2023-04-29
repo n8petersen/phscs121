@@ -10,7 +10,7 @@ G = 9.8
 
 
 ## Problem 1
-v_0 = 4.55 # changing var
+v_0 = 4.01 # changing var
 l = 1.54
 angle = 21.7
 
@@ -19,6 +19,8 @@ h2 = 1.54 * sin(radians(angle))
 
 v_f = sqrt(2*((0.5) * v_0**2 + G * h1 - G * h2))
 print("1: ", v_f)
+
+print("")
 
 
 

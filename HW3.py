@@ -1,6 +1,14 @@
-import Physics
-import cmath
 import math
+from math import cos
+from math import sin
+from math import tan
+from math import atan
+from math import radians as rad
+from math import degrees as deg
+from math import sqrt
+from math import pi
+from Physics import quadratic_roots
+G = 9.8
 
 
 # Problem 3-1 (a) & (b)
@@ -9,14 +17,15 @@ c = 3.10
 
 a = (c * math.sin(math.radians(degrees)))
 b = (c * math.cos(math.radians(degrees)))
-print(f"3-1-a: {a:.5f}km north")
-print(f"3-1-b: {b:.5f}km east")
+print(f"1a: {a:.5f}km north")
+print(f"1b: {b:.5f}km east")
+print("")
 
 
 
 
 # Problem 3-2
-a_mag = 2.05 # Changing variable
+a_mag = 1.51 # Changing variable
 a_dir_deg = 35
 y = -3.38
 y_not = 0
@@ -34,19 +43,31 @@ a = (1/2) * a_y
 b = v_not
 c = y
 t = 0
-roots = Physics.quadratic_roots(a, b, c)
+
+roots = quadratic_roots(a, b, c)
+
 for root in roots:
     if (root > 0): 
         t = root
 
-print(f"3-2-a: {t:.5f}s at y(t) = 3.38m")
+print("2a:", t, "at y(t) = 3.38m")
         
 
 ## Part (b)
-### find pos_x at t
-### Formula: x = x_not + v
+x = 0 +  0 * t + 1/2 * a_x * t**2
+print("2b:", x)
 
 
+## Part (c)
+v_x = a_x * t
+print("2c:", v_x)
+
+
+## Part (c)
+v_y = v_not + a_y * t
+print("2d:", v_y)
+
+print("")
 
 
 # Problem 3-3
@@ -69,33 +90,35 @@ b = v_not_y
 c = y_not
 t = 0
 
-roots = Physics.quadratic_roots(a, b, c)
+roots = quadratic_roots(a, b, c)
 for root in roots:
     if (root > 0): 
         t = root
 
-print(f"3-3-a: {t:.5f}s to hit ground")
+print(f"3a: {t:.5f}s to hit ground")
 
 
 ## Part (b)
 ### Formula: x = x_not + v_x * t
 x = x_not + v_x * t
 
-print(f"3-3-b: {x:.5f}m from base of cliff")
+print(f"3b: {x:.5f}m from base of cliff")
 
 
 ## Part (c)
 ### Formula: v = v_not_y - g * t
 v_y = v_not_y - g * t
-print(f"3-3-c: {v_y:.5f}m/s is v_y")
+print(f"3c: {v_y:.5f}m/s is v_y")
 
 ## Part (d)
-print(f"3-3-d: {v_x:.5f}m/s is v_x")
+print(f"3d: {v_x:.5f}m/s is v_x")
+
+print("")
 
 
 
 # Problem 3-4
-x = 30.5 # Changing Variable
+x = 25.1 # Changing Variable
 h = 3
 x_not = 0
 y_not = 0
@@ -119,7 +142,7 @@ t = (x - x_not) / v_x
 y = y_not + (v_not_y * t) - ((1/2)*(g)*(t**2))
 
 y_clear = y - 3
-print(f"3-4-a: {y_clear:.5f}m is the distance between the bar and the ball")
+print(f"4a: {y_clear:.5f}m is the distance between the bar and the ball")
 
 
 ## Part (b)
@@ -127,7 +150,9 @@ print(f"3-4-a: {y_clear:.5f}m is the distance between the bar and the ball")
 ### positive means ball is rising, negative means ball is falling.
 ### Use Formula: v_y = v_not_y - (g * t)
 v_y = v_not_y - (g * t)
-print(f"3-4-b: {v_y:.5f}m/s is v_y of the ball at {t:.5f}")
+print(f"4b: {v_y:.5f}m/s is v_y of the ball at {t:.5f}")
+
+print("")
 
 
 
@@ -136,8 +161,14 @@ print(f"3-4-b: {v_y:.5f}m/s is v_y of the ball at {t:.5f}")
 y_not = 0.860
 y = 0
 x_not = 0
-x = 1.1 # Changing variable
+x = 1.01 # Changing variable
 
 ## Part (a)
-### Find v_x using: x = x_not + (v_x * t) 
-### Find t using: y = y_not + (1/2) * (v_not_y + v_)
+t = sqrt(2 * y_not / G)
+v_x = x / t
+print("5a: ", v_x)
+
+## Part (b)
+v_y = - g * t
+angle = deg(atan(v_y/v_x))
+print("5b: ", angle)

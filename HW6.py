@@ -4,24 +4,25 @@ G = 9.807
 
 
 # ## Problem 1
-# mass = 110.3 # Changing var
-# mu_s = 0.5
-# mu_k = 0.3
+mass = 110.3 # Changing var
+mu_s = 0.5
+mu_k = 0.3
 
 # ### Part (a)
-# Fn = mass * G
-# f_s_max = mu_s * Fn
-# print("1a: ", f_s_max)
+Fn = mass * G
+f_s_max = mu_s * Fn
+print("1a: ", f_s_max)
 
 # ### Part (b)
-# f_k = mu_k * Fn
-# Fnet = f_s_max - f_k
-# #F = ma
-# #F / m = a
-# a = Fnet / mass
-# print("1b: ", a)
+f_k = mu_k * Fn
+Fnet = f_s_max - f_k
+#F = ma
+#F / m = a
+a = Fnet / mass
+print("1b: ", a)
 
 
+print("")
 
 
 # ## Problem 2
