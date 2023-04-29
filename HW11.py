@@ -54,10 +54,24 @@ theta = theta_f - theta_i
 
         # θ = wavg * t
         # θ / t = wavg
+theta = theta_f - theta_i
+
+# wf = w_i + a*t
+# wf - w_i / t = a
+
+    # (w_i + wf / 2) = w_avg
+    # w_i + wf = 2 * w_avg
+    # w_i = 2 * w_avg   -  wf
+
+        # θ = wavg * t
+        # θ / t = wavg
 
 w_avg = theta / t
 w_i = 2 * w_avg   -  wf
+w_avg = theta / t
+w_i = 2 * w_avg   -  wf
 
+a = (wf - w_i) / t
 a = (wf - w_i) / t
 print("2: ", a)
 
@@ -109,7 +123,6 @@ print("3e: ", a_t)
 
 print("")
 
-
 #=======================================================#
 
 
@@ -117,7 +130,6 @@ print("")
 # No mass or radius given?? How do we calculate without these?
 d = 6.02 # changing var
 angle = 35
-
 h = d * sin(rad(angle))
 
 ### Part a
